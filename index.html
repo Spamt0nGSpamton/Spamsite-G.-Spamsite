@@ -335,6 +335,65 @@
 
     .terminal span { color: var(--acid-yellow); }
 
+    .near-you {
+      margin: 18px 0;
+      padding: 18px;
+      border: 5px ridge var(--warning-red);
+      background:
+        linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.9)),
+        repeating-linear-gradient(135deg, rgba(255,242,0,0.18) 0 18px, rgba(255,0,43,0.16) 18px 36px);
+      box-shadow: 0 0 34px var(--warning-red), inset 0 0 24px #000;
+    }
+
+    .near-you h2 {
+      margin: 0 0 8px;
+      color: var(--acid-yellow);
+      font-size: clamp(2rem, 6vw, 4.6rem);
+      text-align: center;
+      text-transform: uppercase;
+      animation: pop 1.2s infinite;
+    }
+
+    .near-you > p {
+      text-align: center;
+      color: var(--blue-deal);
+      font-weight: 900;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .location-card {
+      padding: 14px;
+      border: 4px outset var(--acid-yellow);
+      background: rgba(5,0,6,0.88);
+      box-shadow: 6px 6px 0 #000;
+      transform: rotate(var(--location-tilt));
+    }
+
+    .location-card h3 {
+      margin: 0 0 8px;
+      color: var(--toxic-green);
+      font-size: 1.35rem;
+    }
+
+    .location-card p {
+      margin: 6px 0;
+    }
+
+    .distance {
+      display: inline-block;
+      padding: 3px 8px;
+      color: #000;
+      background: var(--acid-yellow);
+      font-weight: 900;
+      text-shadow: none;
+    }
+
     .asset-circus {
       margin: 18px 0;
       padding: 18px;
@@ -527,8 +586,8 @@
     }
 
     @media (max-width: 820px) {
-      .hero-grid, .threats, .ad-overload, .fake-downloads, .sound-rack { grid-template-columns: 1fr; }
-      .popup, .ad-popup { transform: none; }
+      .hero-grid, .threats, .ad-overload, .fake-downloads, .sound-rack, .location-grid { grid-template-columns: 1fr; }
+      .popup, .ad-popup, .location-card { transform: none; }
     }
   </style>
 </head>
@@ -611,6 +670,28 @@
       <div>&gt; encrypting fears with premium late-90s capitalism...</div>
       <div>&gt; payload status: <span>PURELY DECORATIVE</span></div>
       <div>&gt; final message: <span>NOW'S YOUR CHANCE TO BE A [[BIG SHOT]]</span></div>
+    </section>
+
+    <section class="near-you" aria-label="Fake Hochi Mama locations near you">
+      <h2>[[Hochi Mama's]] Near You</h2>
+      <p>Spamton found several completely fake local offers using only [[IMAGINATION]] and a broken map printed in 1997.</p>
+      <div class="location-grid">
+        <article class="location-card" style="--location-tilt:-1.5deg">
+          <h3>Hochi Mama's Back-Alley Buffet</h3>
+          <p><span class="distance">0.03 miles?</span></p>
+          <p>Serving pipis poppers, discount spaghetti, and one locked door labeled “EMPLOYEES [[ONLY]].”</p>
+        </article>
+        <article class="location-card" style="--location-tilt:1deg">
+          <h3>Hochi Mama's Hyperlink Lounge</h3>
+          <p><span class="distance">404 feet away</span></p>
+          <p>Ask about the secret menu item that keeps changing its URL whenever you look directly at it.</p>
+        </article>
+        <article class="location-card" style="--location-tilt:-0.8deg">
+          <h3>Hochi Mama's Kromer Drive-Thru</h3>
+          <p><span class="distance">Nowhere / everywhere</span></p>
+          <p>Open until the phone stops ringing. No reservations, no tracking, no actual location data.</p>
+        </article>
+      </div>
     </section>
 
     <section class="asset-circus" aria-label="Spamton asset overload gallery">
