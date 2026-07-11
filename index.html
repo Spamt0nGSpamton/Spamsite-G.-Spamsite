@@ -551,18 +551,34 @@
     const progressFill = document.querySelector("#progress-fill");
     let fakeDownloadTimer;
 
+    function randomBetween(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     function startFakeDownload(fileName) {
       let progress = 0;
-      clearInterval(fakeDownloadTimer);
+      clearTimeout(fakeDownloadTimer);
       downloadName.textContent = fileName;
       downloadPercent.textContent = "0%";
       progressFill.style.setProperty("--fake-progress", "0%");
 
-      fakeDownloadTimer = setInterval(() => {
-        progress += progress < 100 ? 7 : 19;
+      function crawlTowardInfinity() {
+        const isPastBorder = progress >= 100;
+        const jump = isPastBorder ? randomBetween(6, 21) : randomBetween(1, 4);
+        const delay = isPastBorder ? randomBetween(520, 1700) : randomBetween(650, 2100);
+
+        progress += jump;
+        if (progress >= 1001 && downloadPercent.textContent !== "∞%") {
+          progress = 1001;
+        }
+
         progressFill.style.setProperty("--fake-progress", `${progress}%`);
-        downloadPercent.textContent = progress >= 260 ? "∞%" : `${progress}%`;
-      }, 180);
+        downloadPercent.textContent = progress >= 1001 ? "∞%" : `${progress}%`;
+
+        fakeDownloadTimer = setTimeout(crawlTowardInfinity, delay);
+      }
+
+      fakeDownloadTimer = setTimeout(crawlTowardInfinity, randomBetween(650, 2100));
     }
 
     fakeDownloadButtons.forEach((button) => {
