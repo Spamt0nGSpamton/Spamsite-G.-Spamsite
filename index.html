@@ -125,6 +125,96 @@
       box-shadow: 8px 8px 0 #000, 0 0 28px rgba(255,0,43,0.45);
     }
 
+    .ad-overload {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 18px 0;
+      padding: 18px;
+      border: 5px dotted var(--acid-yellow);
+      background:
+        linear-gradient(rgba(0,0,0,0.68), rgba(0,0,0,0.9)),
+        url("Assets/banana-header.png") center/220px repeat;
+      box-shadow: inset 0 0 30px var(--warning-red), 0 0 28px var(--acid-yellow);
+    }
+
+    .ad-overload::before {
+      content: "ADWARE POPUP STORM DETECTED";
+      position: absolute;
+      top: -16px;
+      left: 24px;
+      padding: 3px 12px;
+      color: #000;
+      background: var(--acid-yellow);
+      border: 3px solid var(--warning-red);
+      font-weight: 900;
+      text-shadow: none;
+      transform: rotate(-2deg);
+    }
+
+    .ad-popup {
+      position: relative;
+      min-height: 250px;
+      padding: 10px;
+      border: 4px outset #f0f0f0;
+      background: linear-gradient(160deg, #fff, #ffe600 35%, #ff00aa 70%, #000);
+      color: #000;
+      text-align: center;
+      text-shadow: none;
+      box-shadow: 7px 7px 0 #000, 0 0 18px var(--toxic-green);
+      transform: rotate(var(--ad-tilt));
+      animation: ad-wiggle 1.6s steps(2, end) infinite;
+    }
+
+    .ad-popup:nth-child(even) {
+      animation-delay: 0.45s;
+      background: linear-gradient(160deg, #00d9ff, #fff 30%, #39ff14 62%, #ff002b);
+    }
+
+    .ad-popup .close {
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      display: inline-grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #000;
+      background: var(--warning-red);
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .ad-popup img {
+      max-width: 100%;
+      max-height: 105px;
+      object-fit: contain;
+      margin: 16px auto 8px;
+      image-rendering: pixelated;
+      filter: drop-shadow(3px 3px 0 #000);
+    }
+
+    .ad-popup h3 {
+      margin: 4px 0;
+      color: #000;
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .ad-popup p {
+      margin: 6px 0 0;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    @keyframes ad-wiggle {
+      0%, 100% { transform: rotate(var(--ad-tilt)) translate(0, 0); }
+      25% { transform: rotate(calc(var(--ad-tilt) * -1)) translate(2px, -2px); }
+      50% { transform: rotate(var(--ad-tilt)) translate(-2px, 2px); }
+      75% { transform: rotate(calc(var(--ad-tilt) + 2deg)) translate(1px, 1px); }
+    }
+
     .titlebar {
       display: flex;
       justify-content: space-between;
@@ -251,6 +341,91 @@
       image-rendering: pixelated;
     }
 
+    .fake-downloads {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .download-choice {
+      padding: 12px;
+      border: 4px outset var(--acid-yellow);
+      background: #000;
+      color: var(--acid-yellow);
+      font: inherit;
+      font-weight: 900;
+      text-shadow: 2px 2px 0 var(--warning-red);
+      cursor: pointer;
+      animation: pop 1.4s infinite;
+    }
+
+    .download-choice:hover,
+    .download-choice:focus {
+      background: var(--toxic-green);
+      color: #000;
+      text-shadow: none;
+      outline: 3px solid white;
+    }
+
+    .download-monitor {
+      position: relative;
+      margin: 18px auto 8px;
+      padding: 14px;
+      max-width: 760px;
+      border: 4px inset #c0c0c0;
+      background: #010101;
+      color: var(--toxic-green);
+      text-align: left;
+      overflow: visible;
+    }
+
+    .download-label,
+    .download-percent {
+      margin: 0 0 8px;
+      font-weight: 900;
+    }
+
+    .download-label span,
+    .download-percent span {
+      color: var(--acid-yellow);
+    }
+
+    .progress-track {
+      position: relative;
+      height: 34px;
+      border: 3px solid white;
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.12) 0 12px, transparent 12px 24px),
+        #210029;
+      overflow: visible;
+      box-shadow: 0 0 18px var(--blue-deal);
+    }
+
+    .progress-fill {
+      width: var(--fake-progress, 0%);
+      height: 100%;
+      background: repeating-linear-gradient(90deg, var(--toxic-green) 0 18px, var(--acid-yellow) 18px 28px, var(--warning-red) 28px 38px);
+      box-shadow: 0 0 18px var(--toxic-green);
+      transition: width 0.18s linear;
+    }
+
+    .progress-track::after {
+      content: "100% BORDER";
+      position: absolute;
+      top: -24px;
+      right: 0;
+      color: var(--acid-yellow);
+      font-size: 0.75rem;
+      font-weight: 900;
+    }
+
+    .download-note {
+      margin: 10px 0 0;
+      color: white;
+      text-align: center;
+    }
+
     footer {
       margin-top: 24px;
       text-align: center;
@@ -259,8 +434,8 @@
     }
 
     @media (max-width: 820px) {
-      .hero-grid, .threats { grid-template-columns: 1fr; }
-      .popup { transform: none; }
+      .hero-grid, .threats, .ad-overload, .fake-downloads { grid-template-columns: 1fr; }
+      .popup, .ad-popup { transform: none; }
     }
   </style>
 </head>
@@ -295,6 +470,33 @@
 
     <marquee class="marquee" behavior="alternate" scrollamount="16">!!! FREE [[VIRUS-LIKE VIBES]] !!! SYSTEM32? MORE LIKE SYSTEM [[BIG SHOT]] !!! NOTHING HERE CAN HURT YOUR COMPUTER !!!</marquee>
 
+    <section class="ad-overload" aria-label="Fake adware popup storm">
+      <article class="ad-popup" style="--ad-tilt:-3deg">
+        <span class="close">X</span>
+        <img src="Assets/banana-header.png" alt="Banana banner advertisement" />
+        <h3>FREE BANANA RAM</h3>
+        <p>Download 12 potassiums directly into your monitor! [[NOT ACTUALLY]]</p>
+      </article>
+      <article class="ad-popup" style="--ad-tilt:2deg">
+        <span class="close">X</span>
+        <img src="Assets/icee.gif" alt="Animated Ice-E ad" />
+        <h3>ICE-E.EXE IS CHILL</h3>
+        <p>Your CPU temperature is now emotionally slushified!</p>
+      </article>
+      <article class="ad-popup" style="--ad-tilt:-1.5deg">
+        <span class="close">X</span>
+        <img src="Assets/prize-banner.gif" alt="Animated prize banner" />
+        <h3>PRIZE INSIDE!!!</h3>
+        <p>Claim a free popup that opens another popup in your imagination.</p>
+      </article>
+      <article class="ad-popup" style="--ad-tilt:3deg">
+        <span class="close">X</span>
+        <img src="Assets/youve-won.gif" alt="You've won flashing banner" />
+        <h3>YOU'VE WON!</h3>
+        <p>Grand prize: one suspiciously generous [[BIG SHOT]] compliment.</p>
+      </article>
+    </section>
+
     <section class="threats" aria-label="Fake alert cards">
       <div class="popup" style="--tilt:-2deg">
         <h3>ALERT: Wallet Detected</h3>
@@ -323,12 +525,51 @@
       <img src="Assets/deltarune-pipis.gif" alt="Spinning pipis" />
       <img src="Assets/spamdance.gif" alt="Dancing Spamton" />
       <img src="Assets/clipart-cash.png" alt="Cash clipart" />
-      <p>No files are served from this page. Every scary phrase is set dressing for a Spamton-themed spoof.</p>
+      <div class="fake-downloads" aria-label="Fake download buttons">
+        <button class="download-choice" type="button" data-fake-file="BIG_SHOT_INSTALLER_NOT_A_VIRUS.exe">DOWNLOAD BIG_SHOT_INSTALLER</button>
+        <button class="download-choice" type="button" data-fake-file="PIPIS_RAM_DOUBLER_FREE_TRIAL.zip">DOWNLOAD PIPIS RAM</button>
+        <button class="download-choice" type="button" data-fake-file="KROMER_WALLET_POLISHER_1997.iso">DOWNLOAD KROMER POLISHER</button>
+      </div>
+      <div class="download-monitor" aria-live="polite">
+        <p class="download-label">Downloading: <span id="download-name">nothing yet, [[VALUED CUSTOMER]]</span></p>
+        <div class="progress-track" aria-label="Fake download progress bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <p class="download-percent">Progress: <span id="download-percent">0%</span></p>
+      </div>
+      <p class="download-note">No files are served from this page. Clicks only start a fake progress bar that escapes the box forever.</p>
     </section>
 
     <footer>
       <p>© 1997-FOREVER Spamton G. Spamton's Totally Legitimate Non-Malware Page. Best viewed with suspicion.</p>
     </footer>
   </main>
+  <script>
+    const fakeDownloadButtons = document.querySelectorAll(".download-choice");
+    const downloadName = document.querySelector("#download-name");
+    const downloadPercent = document.querySelector("#download-percent");
+    const progressFill = document.querySelector("#progress-fill");
+    let fakeDownloadTimer;
+
+    function startFakeDownload(fileName) {
+      let progress = 0;
+      clearInterval(fakeDownloadTimer);
+      downloadName.textContent = fileName;
+      downloadPercent.textContent = "0%";
+      progressFill.style.setProperty("--fake-progress", "0%");
+
+      fakeDownloadTimer = setInterval(() => {
+        progress += progress < 100 ? 7 : 19;
+        progressFill.style.setProperty("--fake-progress", `${progress}%`);
+        downloadPercent.textContent = progress >= 260 ? "∞%" : `${progress}%`;
+      }, 180);
+    }
+
+    fakeDownloadButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        startFakeDownload(button.dataset.fakeFile);
+      });
+    });
+  </script>
 </body>
 </html>
