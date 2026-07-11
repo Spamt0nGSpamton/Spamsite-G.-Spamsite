@@ -29,6 +29,57 @@
     a { display: inline-block; margin: 10px; padding: 14px 18px; border: 4px outset #fff200; background: #ff002b; color: white; font-weight: 900; text-decoration: none; }
     a:hover, a:focus { background: #39ff14; color: #000; text-shadow: none; }
     .safe { color: #00d9ff; }
+
+    .action-button { display: inline-block; margin: 10px; padding: 14px 18px; border: 4px outset #fff200; background: #ff002b; color: white; font: inherit; font-weight: 900; text-decoration: none; text-shadow: 3px 3px 0 #000; cursor: pointer; }
+    .action-button:hover, .action-button:focus { background: #39ff14; color: #000; text-shadow: none; }
+    .download-monitor[hidden] { display: none; }
+
+    .download-monitor {
+      position: relative;
+      margin: 18px auto 8px;
+      padding: 14px;
+      max-width: 760px;
+      border: 4px inset #c0c0c0;
+      background: #010101;
+      color: #39ff14;
+      text-align: left;
+      overflow: visible;
+    }
+    .download-label,
+    .download-percent {
+      margin: 0 0 8px;
+      font-weight: 900;
+    }
+    .download-label span,
+    .download-percent span {
+      color: #fff200;
+    }
+    .progress-track {
+      position: relative;
+      height: 34px;
+      border: 3px solid white;
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.12) 0 12px, transparent 12px 24px),
+        #210029;
+      overflow: visible;
+      box-shadow: 0 0 18px #00d9ff;
+    }
+    .progress-fill {
+      width: var(--fake-progress, 0%);
+      height: 100%;
+      background: repeating-linear-gradient(90deg, #39ff14 0 18px, #fff200 18px 28px, #ff002b 28px 38px);
+      box-shadow: 0 0 18px #39ff14;
+      transition: width 0.18s linear;
+    }
+    .progress-track::after {
+      content: "100% BORDER";
+      position: absolute;
+      top: -24px;
+      right: 0;
+      color: #fff200;
+      font-size: 0.75rem;
+      font-weight: 900;
+    }
   </style>
 </head>
 <body>
@@ -37,7 +88,58 @@
     <h1>CONGRATULATIONS, [[LUCKY CUSTOMER]]!!</h1>
     <p>Your exclusive [[GRAND PRIZE]] is waiting just ONE CLICK away!! No entry required! No effort required! No idea what's inside! The ONLY thing standing between YOU and unimaginable [[RICHES]] is your willingness to ignore basic internet safety!!</p>
     <p class="safe">SAFE SPAMTON AD PAGE: no tracking, no malware.</p>
+    <button class="action-button" id="fake-action-button" type="button" data-fake-file="MYSTERY_PRIZE_SHIPPING_ADDRESS">CLAIM PRIZE</button>
+    <div class="download-monitor" aria-live="polite" hidden>
+      <p class="download-label">Gathering address: <span id="download-name">nothing yet, [[VALUED CUSTOMER]]</span></p>
+      <div class="progress-track" aria-label="Fake progress bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <p class="download-percent">Progress: <span id="download-percent">0%</span></p>
+    </div>
     <a href="../index.html">Reject suspicious prize</a>
   </main>
+
+  <script>
+    const fakeActionButton = document.querySelector("#fake-action-button");
+    const downloadName = document.querySelector("#download-name");
+    const downloadPercent = document.querySelector("#download-percent");
+    const progressFill = document.querySelector("#progress-fill");
+    let fakeDownloadTimer;
+
+    function randomBetween(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function startFakeProgress(label) {
+      let progress = 0;
+      clearTimeout(fakeDownloadTimer);
+      downloadName.closest(".download-monitor").hidden = false;
+      downloadName.textContent = label;
+      downloadPercent.textContent = "0%";
+      progressFill.style.setProperty("--fake-progress", "0%");
+
+      function crawlTowardInfinity() {
+        const isPastBorder = progress >= 100;
+        const jump = isPastBorder ? randomBetween(6, 21) : randomBetween(1, 4);
+        const delay = isPastBorder ? randomBetween(520, 1700) : randomBetween(650, 2100);
+
+        progress += jump;
+        if (progress >= 1001 && downloadPercent.textContent !== "∞%") {
+          progress = 1001;
+        }
+
+        progressFill.style.setProperty("--fake-progress", `${progress}%`);
+        downloadPercent.textContent = progress >= 1001 ? "∞%" : `${progress}%`;
+
+        fakeDownloadTimer = setTimeout(crawlTowardInfinity, delay);
+      }
+
+      fakeDownloadTimer = setTimeout(crawlTowardInfinity, randomBetween(650, 2100));
+    }
+
+    fakeActionButton.addEventListener("click", () => {
+      startFakeProgress(fakeActionButton.dataset.fakeFile);
+    });
+  </script>
 </body>
 </html>
