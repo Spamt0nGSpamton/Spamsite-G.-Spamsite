@@ -15,8 +15,6 @@
     h1 { color: #fff200; font-size: clamp(2rem, 7vw, 5rem); margin: 0 0 18px; animation: flicker 3.5s infinite; }
     p { max-width: 620px; margin: 12px auto; font-size: 1.1rem; color: #baffb2; }
     .wrong { color: rgba(255,255,255,0.35); font-size: 0.85rem; letter-spacing: 0.35em; }
-    .hairline { position: fixed; right: 2vw; bottom: 2vh; z-index: 2; color: rgba(255,255,255,0.08); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.55em; }
-    .hairline:hover, .hairline:focus { color: #fff200; text-shadow: 0 0 18px #fff200; }
     .escape { position: fixed; left: 2vw; bottom: 2vh; z-index: 2; color: rgba(57,255,20,0.12); text-decoration: none; font-size: 0.7rem; }
     .escape:hover, .escape:focus { color: #39ff14; }
     audio { display: none; }
@@ -36,7 +34,6 @@ DON'T ANSWER.<br><br>
 CONTINUE SHOPPING.</p>
   </main>
   <audio id="dialtone" src="../Assets/midi-dialtone.mp3" autoplay loop></audio>
-  <a class="hairline" href="man-room.html" aria-label="A barely visible wrong door">wrong door</a>
   <a class="escape" href="won.html">hang up</a>
   <script>
     const dialtone = document.querySelector("#dialtone");

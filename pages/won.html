@@ -86,7 +86,7 @@ HANDLE SOLD SEPARATELY.</p>
       </div>
       <p class="download-percent">Progress: <span id="download-percent">0%</span></p>
     </div>
-    <a class="crack" href="scary-dialtone.html">listen</a>
+    <a class="crack" id="listen-link" href="scary-dialtone.html">listen</a>
     <a href="../index.html">GO BACK TO THE DEALS</a>
   </main>
 
@@ -130,6 +130,22 @@ HANDLE SOLD SEPARATELY.</p>
 
     fakeActionButton.addEventListener("click", () => {
       startFakeProgress(fakeActionButton.dataset.fakeFile);
+    });
+
+    const listenLink = document.querySelector("#listen-link");
+    const listenCountKey = "spamtonListenCount";
+
+    listenLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      const listenCount = Number(localStorage.getItem(listenCountKey) || 0) + 1;
+      localStorage.setItem(listenCountKey, String(listenCount));
+
+      if (listenCount > 3 && Math.random() < 0.05) {
+        window.location.href = "man-room.html";
+        return;
+      }
+
+      window.location.href = listenLink.href;
     });
   </script>
 </body>
