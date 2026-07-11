@@ -3,34 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>[[SPAMTON]] THE PHONE IS RINGING</title>
+  <title>[[SPAMTON]] LINE OPEN</title>
   <style>
-    @keyframes breathe { 0%, 100% { filter: brightness(0.65); transform: scale(1); } 50% { filter: brightness(1.4); transform: scale(1.02); } }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; color: #39ff14; background: radial-gradient(circle, #250011, #000 68%); font-family: "Courier New", monospace; text-align: center; overflow: hidden; }
-    body::before { content: "CALLING... CALLING... CALLING..."; position: fixed; inset: 0; color: rgba(57,255,20,0.08); font-size: 8vw; line-height: 1.2; overflow-wrap: anywhere; animation: breathe 4s infinite; }
-    main { position: relative; z-index: 1; width: min(760px, calc(100% - 28px)); padding: 26px; border: 3px solid #39ff14; background: rgba(0,0,0,0.86); box-shadow: 0 0 50px #39ff14; animation: breathe 5s infinite; }
-    h1 { color: #fff200; font-size: clamp(2rem, 7vw, 5rem); }
-    p { font-size: 1.15rem; }
-    a, button { display: inline-block; margin: 10px; padding: 14px 18px; border: 3px solid #39ff14; background: #000; color: #39ff14; font: inherit; font-weight: 900; text-decoration: none; cursor: pointer; }
-    a:hover, button:hover, a:focus, button:focus { background: #39ff14; color: #000; }
-    audio { width: min(440px, 90%); margin-top: 14px; }
+    @keyframes breathe { 0%, 100% { filter: brightness(0.55); transform: scale(1); } 50% { filter: brightness(1.55); transform: scale(1.025); } }
+    @keyframes crawl { from { transform: translateY(0); } to { transform: translateY(-120px); } }
+    @keyframes flicker { 0%, 19%, 21%, 54%, 56%, 100% { opacity: 1; } 20%, 55% { opacity: 0.22; } }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; color: #39ff14; background: radial-gradient(circle at center, #24000f, #000 60%); font-family: "Courier New", monospace; text-align: center; overflow: hidden; cursor: help; }
+    body::before { content: "CALLING YOU CALLING YOU CALLING YOU CALLING YOU CALLING YOU"; position: fixed; inset: -20vh -10vw; color: rgba(57,255,20,0.08); font-size: clamp(2rem, 8vw, 8rem); line-height: 1.05; overflow-wrap: anywhere; animation: crawl 18s linear infinite; }
+    body::after { content: ""; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 6px); mix-blend-mode: screen; pointer-events: none; }
+    main { position: relative; z-index: 1; width: min(780px, calc(100% - 28px)); padding: 28px; border: 1px solid rgba(57,255,20,0.7); background: rgba(0,0,0,0.84); box-shadow: 0 0 70px #39ff14, inset 0 0 40px #000; animation: breathe 5s infinite; }
+    h1 { color: #fff200; font-size: clamp(2rem, 7vw, 5rem); margin: 0 0 18px; animation: flicker 3.5s infinite; }
+    p { max-width: 620px; margin: 12px auto; font-size: 1.1rem; color: #baffb2; }
+    .wrong { color: rgba(255,255,255,0.35); font-size: 0.85rem; letter-spacing: 0.35em; }
+    .hairline { position: fixed; right: 2vw; bottom: 2vh; z-index: 2; color: rgba(255,255,255,0.08); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.55em; }
+    .hairline:hover, .hairline:focus { color: #fff200; text-shadow: 0 0 18px #fff200; }
+    .escape { position: fixed; left: 2vw; bottom: 2vh; z-index: 2; color: rgba(57,255,20,0.12); text-decoration: none; font-size: 0.7rem; }
+    .escape:hover, .escape:focus { color: #39ff14; }
+    audio { display: none; }
   </style>
 </head>
 <body>
-  <main>
-    <h1>[[THE PHONE WON'T STOP]]</h1>
-    <p>This Spamton page plays a dialtone loop if your browser allows autoplay. Use the controls if it blocks sound.</p>
-    <audio id="dialtone" src="../Assets/midi-dialtone.mp3" autoplay loop controls></audio>
-    <p>The next door is not by Spamton. It is worse.</p>
-    <button type="button" id="start-audio">START THE RINGING</button>
-    <a href="man-room.html">OPEN THE WAY SCARIER PAGE</a>
-    <a href="won.html">RETURN TO SPAMTON'S PRIZE ROOM</a>
+  <main aria-label="A Spamton page that should not exist">
+    <h1>[[THE LINE IS ALREADY OPEN]]</h1>
+    <p>The receiver is warm. Nobody dialed. The room is listening through a number that was never printed.</p>
+    <p class="wrong">THIS SPAMTON PAGE SHOULD NOT BE INDEXED</p>
   </main>
+  <audio id="dialtone" src="../Assets/midi-dialtone.mp3" autoplay loop></audio>
+  <a class="hairline" href="man-room.html" aria-label="A barely visible wrong door">wrong door</a>
+  <a class="escape" href="won.html">hang up</a>
   <script>
     const dialtone = document.querySelector("#dialtone");
-    document.querySelector("#start-audio").addEventListener("click", () => {
+    dialtone.volume = 0.55;
+    window.addEventListener("load", () => {
       dialtone.play();
     });
+    document.addEventListener("pointerdown", () => {
+      dialtone.play();
+    }, { once: true });
   </script>
 </body>
 </html>
