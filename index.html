@@ -335,6 +335,91 @@
 
     .terminal span { color: var(--acid-yellow); }
 
+    .asset-circus {
+      margin: 18px 0;
+      padding: 18px;
+      border: 6px groove var(--blue-deal);
+      background:
+        linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.92)),
+        repeating-conic-gradient(from 45deg, rgba(255,0,43,0.24) 0 10deg, rgba(57,255,20,0.2) 10deg 20deg, rgba(255,242,0,0.18) 20deg 30deg);
+      box-shadow: 0 0 36px var(--blue-deal), inset 0 0 30px #000;
+    }
+
+    .asset-circus h2 {
+      margin: 0 0 10px;
+      color: var(--acid-yellow);
+      font-size: clamp(1.9rem, 5vw, 4.2rem);
+      text-align: center;
+      animation: glitch 1.8s steps(2, end) infinite;
+    }
+
+    .asset-circus p {
+      text-align: center;
+    }
+
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .asset-card {
+      min-height: 142px;
+      padding: 8px;
+      border: 3px outset #c0c0c0;
+      background: rgba(0,0,0,0.76);
+      color: white;
+      text-align: center;
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    .asset-card:nth-child(3n) { transform: rotate(1.2deg); }
+    .asset-card:nth-child(4n) { transform: rotate(-1.4deg); }
+
+    .asset-card img {
+      max-width: 100%;
+      height: 82px;
+      object-fit: contain;
+      image-rendering: pixelated;
+      filter: drop-shadow(0 0 8px var(--acid-yellow));
+    }
+
+    .asset-card span {
+      display: block;
+      margin-top: 6px;
+      color: var(--toxic-green);
+      font-size: 0.72rem;
+      line-height: 1.1;
+      overflow-wrap: anywhere;
+    }
+
+    .sound-rack {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .sound-rack figure {
+      margin: 0;
+      padding: 10px;
+      border: 3px dashed var(--warning-red);
+      background: #000;
+    }
+
+    .sound-rack figcaption {
+      margin-bottom: 8px;
+      color: var(--acid-yellow);
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .sound-rack audio {
+      width: 100%;
+      filter: hue-rotate(100deg) saturate(1.8);
+    }
+
     .download-zone {
       margin-top: 18px;
       padding: 18px;
@@ -442,7 +527,7 @@
     }
 
     @media (max-width: 820px) {
-      .hero-grid, .threats, .ad-overload, .fake-downloads { grid-template-columns: 1fr; }
+      .hero-grid, .threats, .ad-overload, .fake-downloads, .sound-rack { grid-template-columns: 1fr; }
       .popup, .ad-popup { transform: none; }
     }
   </style>
@@ -526,6 +611,57 @@
       <div>&gt; encrypting fears with premium late-90s capitalism...</div>
       <div>&gt; payload status: <span>PURELY DECORATIVE</span></div>
       <div>&gt; final message: <span>NOW'S YOUR CHANCE TO BE A [[BIG SHOT]]</span></div>
+    </section>
+
+    <section class="asset-circus" aria-label="Spamton asset overload gallery">
+      <h2>[[ASSET DUMPSTER DELUXE]]</h2>
+      <p>Spamton has opened the forbidden folder and poured most of the local images onto the page. They are decorative only, but they are absolutely yelling.</p>
+      <div class="asset-grid">
+        <div class="asset-card"><img src="Assets/Spamton_battle_laugh-ezgif.com-webp-to-gif-converter.gif" alt="Spamton battle laugh" /><span>LAUGH.EXE</span></div>
+        <div class="asset-card"><img src="Assets/spamton-deltarune-4.gif" alt="Spamton animation 4" /><span>DEAL FRAME 4</span></div>
+        <div class="asset-card"><img src="Assets/spamton-deltarune-1.gif" alt="Spamton animation 1" /><span>DEAL FRAME 1</span></div>
+        <div class="asset-card"><img src="Assets/spamton-deltarune-3.gif" alt="Spamton animation 3" /><span>DEAL FRAME 3</span></div>
+        <div class="asset-card"><img src="Assets/angel-flip.gif" alt="Flipping angel" /><span>ANGEL INVESTOR</span></div>
+        <div class="asset-card"><img src="Assets/Lancer_item-ezgif.com-webp-to-gif-converter.gif" alt="Lancer item" /><span>ITEM? MAYBE</span></div>
+        <div class="asset-card"><img src="Assets/Spamton_overworld_laughing-ezgif.com-webp-to-gif-converter.gif" alt="Spamton overworld laughing" /><span>OVERWORLD LAUGH</span></div>
+        <div class="asset-card"><img src="Assets/Annoying_Dog_overworld_maracas.gif" alt="Annoying dog with maracas" /><span>DOGWARE</span></div>
+        <div class="asset-card"><img src="Assets/spamton-deltarune-spamton.gif" alt="Spamton Deltarune gif" /><span>SPAMTON UNIT</span></div>
+        <div class="asset-card"><img src="Assets/petpet-spamton.gif" alt="Petting Spamton" /><span>PET THE DEAL</span></div>
+        <div class="asset-card"><img src="Assets/clipart-money-flip.png" alt="Flipped money clipart" /><span>KROMER FLIP</span></div>
+        <div class="asset-card"><img src="Assets/spamton-deltarune.gif" alt="Spamton Deltarune" /><span>CLASSIC SPAM</span></div>
+        <div class="asset-card"><img src="Assets/pixel-toy-car.gif" alt="Pixel toy car" /><span>USED CAR DLC</span></div>
+        <div class="asset-card"><img src="Assets/Spamton_overworld_sinister.webp" alt="Sinister Spamton" /><span>SINISTER MODE</span></div>
+        <div class="asset-card"><img src="Assets/spamton-spin.gif" alt="Spinning Spamton" /><span>SPIN TO WIN</span></div>
+        <div class="asset-card"><img src="Assets/3a0faf4836d2d6ab39599eb53fbbd61e.gif" alt="Mystery gif" /><span>MYSTERY FILE</span></div>
+        <div class="asset-card"><img src="Assets/deltarune-spamton-2.gif" alt="Deltarune Spamton 2" /><span>SPAMTON TWO</span></div>
+        <div class="asset-card"><img src="Assets/Spamton_Shop_Outlined.webp" alt="Outlined Spamton shop sprite" /><span>SHOPKEEPER</span></div>
+        <div class="asset-card"><img src="Assets/deltarune-spamton-1.gif" alt="Deltarune Spamton 1" /><span>SPAMTON ONE</span></div>
+        <div class="asset-card"><img src="Assets/bowcer-spamton.gif" alt="Bowcer Spamton" /><span>BOWCER DEAL</span></div>
+        <div class="asset-card"><img src="Assets/sitting-talking.gif" alt="Sitting talking Spamton" /><span>SITCOM SALES</span></div>
+        <div class="asset-card"><img src="Assets/music.gif" alt="Music icon animation" /><span>MIDI ZONE</span></div>
+        <div class="asset-card"><img src="Assets/spamton-deltarune-2.gif" alt="Spamton animation 2" /><span>DEAL FRAME 2</span></div>
+        <div class="asset-card"><img src="Assets/spamton-delta.gif" alt="Spamton delta" /><span>DELTA DEAL</span></div>
+        <div class="asset-card"><img src="Assets/spermton-spamton.gif" alt="Spermton Spamton" /><span>CURSED CLONE</span></div>
+        <div class="asset-card"><img src="Assets/clipart-trophy-flip.png" alt="Flipped trophy clipart" /><span>TROPHY FLIP</span></div>
+        <div class="asset-card"><img src="Assets/Spamton_battle_spared.webp" alt="Spamton battle spared" /><span>SPARED? NO REFUNDS</span></div>
+        <div class="asset-card"><img src="Assets/spamton-spam-1.gif" alt="Spamton spam animation" /><span>SPAM PACKET</span></div>
+        <div class="asset-card"><img src="Assets/clipart-present.png" alt="Present clipart" /><span>GIFT TRAP</span></div>
+        <div class="asset-card"><img src="Assets/spamton-teto.gif" alt="Spamton Teto animation" /><span>TETO DEAL</span></div>
+      </div>
+      <div class="sound-rack" aria-label="Optional Spamton sound rack">
+        <figure>
+          <figcaption>OPTIONAL SHOP BGM</figcaption>
+          <audio src="Assets/midi-spamton.mp3" controls preload="none"></audio>
+        </figure>
+        <figure>
+          <figcaption>OPTIONAL BATTLE BGM</figcaption>
+          <audio src="Assets/midi-spamton-battle.mp3" controls preload="none"></audio>
+        </figure>
+        <figure>
+          <figcaption>OPTIONAL SLIDE WHISTLE</figcaption>
+          <audio src="Assets/snd_slidewhistle.wav" controls preload="none"></audio>
+        </figure>
+      </div>
     </section>
 
     <section class="download-zone" id="fine-print">
