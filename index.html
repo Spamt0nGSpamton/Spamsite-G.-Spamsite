@@ -154,6 +154,7 @@
     }
 
     .ad-popup {
+      display: block;
       position: relative;
       min-height: 250px;
       padding: 10px;
@@ -161,10 +162,17 @@
       background: linear-gradient(160deg, #fff, #ffe600 35%, #ff00aa 70%, #000);
       color: #000;
       text-align: center;
+      text-decoration: none;
       text-shadow: none;
       box-shadow: 7px 7px 0 #000, 0 0 18px var(--toxic-green);
       transform: rotate(var(--ad-tilt));
       animation: ad-wiggle 1.6s steps(2, end) infinite;
+    }
+
+    .ad-popup:hover,
+    .ad-popup:focus {
+      outline: 5px solid white;
+      filter: saturate(1.8) brightness(1.15);
     }
 
     .ad-popup:nth-child(even) {
@@ -471,30 +479,30 @@
     <marquee class="marquee" behavior="alternate" scrollamount="16">!!! FREE [[VIRUS-LIKE VIBES]] !!! SYSTEM32? MORE LIKE SYSTEM [[BIG SHOT]] !!! NOTHING HERE CAN HURT YOUR COMPUTER !!!</marquee>
 
     <section class="ad-overload" aria-label="Fake adware popup storm">
-      <article class="ad-popup" style="--ad-tilt:-3deg">
+      <a class="ad-popup" href="pages/banana.html" style="--ad-tilt:-3deg">
         <span class="close">X</span>
         <img src="Assets/banana-header.png" alt="Banana banner advertisement" />
         <h3>FREE BANANA RAM</h3>
         <p>Download 12 potassiums directly into your monitor! [[NOT ACTUALLY]]</p>
-      </article>
-      <article class="ad-popup" style="--ad-tilt:2deg">
+      </a>
+      <a class="ad-popup" href="pages/icee.html" style="--ad-tilt:2deg">
         <span class="close">X</span>
         <img src="Assets/icee.gif" alt="Animated Ice-E ad" />
         <h3>ICE-E.EXE IS CHILL</h3>
         <p>Your CPU temperature is now emotionally slushified!</p>
-      </article>
-      <article class="ad-popup" style="--ad-tilt:-1.5deg">
+      </a>
+      <a class="ad-popup" href="pages/prize.html" style="--ad-tilt:-1.5deg">
         <span class="close">X</span>
         <img src="Assets/prize-banner.gif" alt="Animated prize banner" />
         <h3>PRIZE INSIDE!!!</h3>
         <p>Claim a free popup that opens another popup in your imagination.</p>
-      </article>
-      <article class="ad-popup" style="--ad-tilt:3deg">
+      </a>
+      <a class="ad-popup" href="pages/won.html" style="--ad-tilt:3deg">
         <span class="close">X</span>
         <img src="Assets/youve-won.gif" alt="You've won flashing banner" />
         <h3>YOU'VE WON!</h3>
         <p>Grand prize: one suspiciously generous [[BIG SHOT]] compliment.</p>
-      </article>
+      </a>
     </section>
 
     <section class="threats" aria-label="Fake alert cards">

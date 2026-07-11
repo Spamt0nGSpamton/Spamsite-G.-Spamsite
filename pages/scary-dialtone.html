@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[[SPAMTON]] THE PHONE IS RINGING</title>
+  <style>
+    @keyframes breathe { 0%, 100% { filter: brightness(0.65); transform: scale(1); } 50% { filter: brightness(1.4); transform: scale(1.02); } }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; color: #39ff14; background: radial-gradient(circle, #250011, #000 68%); font-family: "Courier New", monospace; text-align: center; overflow: hidden; }
+    body::before { content: "CALLING... CALLING... CALLING..."; position: fixed; inset: 0; color: rgba(57,255,20,0.08); font-size: 8vw; line-height: 1.2; overflow-wrap: anywhere; animation: breathe 4s infinite; }
+    main { position: relative; z-index: 1; width: min(760px, calc(100% - 28px)); padding: 26px; border: 3px solid #39ff14; background: rgba(0,0,0,0.86); box-shadow: 0 0 50px #39ff14; animation: breathe 5s infinite; }
+    h1 { color: #fff200; font-size: clamp(2rem, 7vw, 5rem); }
+    p { font-size: 1.15rem; }
+    a, button { display: inline-block; margin: 10px; padding: 14px 18px; border: 3px solid #39ff14; background: #000; color: #39ff14; font: inherit; font-weight: 900; text-decoration: none; cursor: pointer; }
+    a:hover, button:hover, a:focus, button:focus { background: #39ff14; color: #000; }
+    audio { width: min(440px, 90%); margin-top: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>[[THE PHONE WON'T STOP]]</h1>
+    <p>This Spamton page plays a dialtone loop if your browser allows autoplay. Use the controls if it blocks sound.</p>
+    <audio id="dialtone" src="../Assets/midi-dialtone.mp3" autoplay loop controls></audio>
+    <p>The next door is not by Spamton. It is worse.</p>
+    <button type="button" id="start-audio">START THE RINGING</button>
+    <a href="man-room.html">OPEN THE WAY SCARIER PAGE</a>
+    <a href="won.html">RETURN TO SPAMTON'S PRIZE ROOM</a>
+  </main>
+  <script>
+    const dialtone = document.querySelector("#dialtone");
+    document.querySelector("#start-audio").addEventListener("click", () => {
+      dialtone.play();
+    });
+  </script>
+</body>
+</html>
